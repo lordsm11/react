@@ -30,7 +30,7 @@ function updateQuantity(state, id, threshold) {
 
 
     let newState = state.products.map((item, index) => {
-        if (item.id != id) {
+        if (item.id !== id) {
             return item;
         }
         return {...item, quantity: item.quantity + threshold };
