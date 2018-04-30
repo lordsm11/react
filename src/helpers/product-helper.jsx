@@ -27,6 +27,10 @@ function removeQuantity(id) {
     });
 }
 
+function getTotalNumberOfClicks  () {
+    return store.getState().productsComponent.clicks;
+}
+
 function updateQuantity(state, id, threshold) {
     let product = findProduct(state.products, id);
     let exist = product.length > 0;
@@ -54,11 +58,48 @@ function updateQuantity(state, id, threshold) {
 
 }
 
+function getProducts() {
+    return [
+        {
+            id: 0,
+            name: 'product0',
+            description: 'description of the product0'
+        },
+        {
+            id: 1,
+            name: 'product1',
+            description: 'description of the product1'
+        },
+        {
+            id: 2,
+            name: 'product2',
+            description: 'description of the product2'
+        },
+        {
+            id: 3,
+            name: 'product3',
+            description: 'description of the product3'
+        },
+        {
+            id: 4,
+            name: 'product4',
+            description: 'description of the product4'
+        },
+        {
+            id: 5,
+            name: 'product5',
+            description: 'description of the product5'
+        },
+    ];
+}
+
 export default
 {
     getGlobalQuantity,
     getQuantity,
     addQuantity,
     removeQuantity,
-    updateQuantity
+    updateQuantity,
+    getTotalNumberOfClicks,
+    getProducts
 }
