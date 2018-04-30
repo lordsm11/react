@@ -4,31 +4,26 @@ function findProduct(products, index) {
     return products.filter((p) => p.id === index);
 }
 
-function getGlobalQuantity() {
-    return store.getState().productsComponent.products.map((a) => (a.quantity)).reduce((a, b) => (a + b), 0);
+function getGlobalQuantity(products) {
+    return products.map((a) => (a.quantity)).reduce((a, b) => (a + b), 0);
 }
 
-function getQuantity(id) {
-    let product = findProduct(store.getState().productsComponent.products, id);
+function getQuantity(products, id) {
+    let product = findProduct(products, id);
     return product.length > 0 ? product[0].quantity : 0;
-}
-
-function addQuantity(id) {
-    return () => store.dispatch({
-        type: 'ADD_PRODUCT',
-        index: id
-    });
-}
-
-function removeQuantity(id) {
-    return () => store.dispatch({
-        type: 'REMOVE_PRODUCT',
-        index: id
-    });
 }
 
 function getTotalNumberOfClicks  () {
     return store.getState().productsComponent.clicks;
+}
+
+function addProduct(state, id, name, description) {
+    console.log(id);
+    console.log(name);
+    console.log(description);
+    let newProducts = state.products.slice();
+    newProducts.splice(id, 0, {id: id, name: name, description:description, quantity: 0});
+    return {...state,  products: newProducts};
 }
 
 function updateQuantity(state, id, threshold) {
@@ -98,9 +93,8 @@ export default
     findProduct,
     getGlobalQuantity,
     getQuantity,
-    addQuantity,
-    removeQuantity,
     updateQuantity,
     getTotalNumberOfClicks,
-    getProducts
+    getProducts,
+    addProduct
 }

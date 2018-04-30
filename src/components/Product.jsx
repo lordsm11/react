@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import productHelper from '../helpers/product-helper';
+import storeHelper from '../helpers/store-helper';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Product extends Component {
 
@@ -9,12 +11,17 @@ class Product extends Component {
         const name = this.props.name;
         return (
             <section>
-                <Link to={"/product/"+id} key={id}>{name}</Link>
-                <span> : [Q={productHelper.getQuantity(id)}]   </span>
-                <button onClick={productHelper.addQuantity(id)}>+</button>
-                <button onClick={productHelper.removeQuantity(id)}>-</button>
+                <Link to={"/products/"+id} key={id}>{name}</Link>
+                <span> : [Q={productHelper.getQuantity(this.props.products, id)}]   </span>
+                <button onClick={storeHelper.addQuantity(id)}>+</button>
+                <button onClick={storeHelper.removeQuantity(id)}>-</button>
             </section>
         )
     }
 }
-export default Product;
+
+const mapStateToProps = state => ({
+    products: state.productsComponent.products
+});
+
+export default connect(mapStateToProps)(Product);
