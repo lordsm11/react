@@ -11,8 +11,8 @@ class ProductList extends Component {
                 <ul>
                     {productHelper.getProducts().map((product,i) => (<li key={i}><Product id={product.id} name={product.name}/></li>))}
                 </ul>
-                Global quantity is : {productHelper.getGlobalQuantity()}
-                Global clicks is : {productHelper.getTotalNumberOfClicks()}
+                <div>Global quantity = [{productHelper.getGlobalQuantity()}]</div>
+                <div>Global clicks = [{productHelper.getTotalNumberOfClicks()}]</div>
             </section>
         )
     }
