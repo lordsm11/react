@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import productHelper from '../helpers/product-helper';
 
 class ProductDetail extends Component {
 
     render() {
-        const id = this.props.match.params.id;
+        const id = Number(this.props.match.params.id);
+        const product = productHelper.findProduct(productHelper.getProducts(), id);
+
         return (
             <section>
-                <span>details are {id} </span>
+                <span>{id} : {product[0].description}</span>
             </section>
         )
     }

@@ -10,10 +10,10 @@ class Product extends Component {
         return (
             <BrowserRouter>
                 <section>
-                    <span>Product component : {this.props.name} : quantity : {productHelper.getQuantity(this.props.id)}</span>
-                    <Link to={"/products/"+this.props.id} key={this.props.id}>{this.props.name}</Link>
-                    <button onClick={productHelper.addQuantity(this.props.id)}>Add</button>
-                    <button onClick={productHelper.removeQuantity(this.props.id)}>Remove</button>
+                    <Link to={"/product/"+this.props.id} key={this.props.id}>{this.props.name}</Link>
+                    <span> : [Q={productHelper.getQuantity(this.props.id)}]   </span>
+                    <button onClick={productHelper.addQuantity(this.props.id)}>+</button>
+                    <button onClick={productHelper.removeQuantity(this.props.id)}>-</button>
                 </section>
             </BrowserRouter>
         )

@@ -95,6 +95,7 @@ function getProducts() {
 
 export default
 {
+    findProduct,
     getGlobalQuantity,
     getQuantity,
     addQuantity,
