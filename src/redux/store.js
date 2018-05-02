@@ -1,5 +1,5 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import productsComponent from './reducers/products-component';
+import productsComponent from './reducers/products-reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer as reduxFormReducer } from 'redux-form';
 import thunk from 'redux-thunk';

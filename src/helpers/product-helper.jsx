@@ -1,4 +1,4 @@
-import store from "../store";
+import store from "../redux/store";
 
 function getProducts() {
     return store.getState().productsComponent.products;

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import productHelper from '../helpers/product-helper';
-import action from '../helpers/actions';
+import productHelper from '../../../helpers/product-helper';
+import action from '../../../helpers/actions';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 class Product extends Component {
 
@@ -20,8 +19,4 @@ class Product extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    products: state.productsComponent.products
-});
-
-export default connect(mapStateToProps)(Product);
+export default Product;

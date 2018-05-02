@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-import action from '../helpers/actions';
 
 class AddProductForm extends Component {
 
     render() {
-        const { handleSubmit, pristine, reset, submitting } = this.props;
+        const { handleSubmit, pristine, submitting } = this.props;
         return (
             <form onSubmit={handleSubmit}>
                 <div>
@@ -31,17 +29,8 @@ class AddProductForm extends Component {
     }
 }
 
-AddProductForm = reduxForm({ form: 'addProductForm' })(AddProductForm);
-
-AddProductForm = connect(
-        state => ({
-            state: state
-        }),
-        {
-            addProduct: action.addProduct
-        }
-        )(AddProductForm);
-
-export default AddProductForm;
+export default reduxForm({
+    form: 'addProductForm',
+})(AddProductForm);
 
 

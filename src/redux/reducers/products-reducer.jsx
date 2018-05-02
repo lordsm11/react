@@ -1,4 +1,4 @@
-import productHelper from '../helpers/product-helper';
+import productHelper from '../../helpers/product-helper';
 
 const initState = {clicks: 0, products: []};
 

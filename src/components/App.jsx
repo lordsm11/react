@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import About from "./about";
-import ProductList from "./productList";
-import ProductDetail from "./ProductDetail";
-import Home from "./home";
+import About from "./presentational/common/about";
+import ProductListContainer from "./containers/ProductListContainer";
+import ProductDetail from "./presentational/product/ProductDetail";
+import Home from "./presentational/common/home";
 
 class App extends Component {
 
@@ -27,7 +27,7 @@ class App extends Component {
                     </nav>
                     <Switch>
                         <Route exact path='/home' component={Home}/>
-                        <Route exact path='/products' component={ProductList}/>
+                        <Route exact path='/products' component={ProductListContainer}/>
                         <Route exact path="/products/:id" component={ProductDetail}/>
                         <Route exact path="/about" component={About}/>
                         <Route component={Home}/>
