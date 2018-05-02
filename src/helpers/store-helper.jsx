@@ -1,14 +1,11 @@
 import store from "../store";
 
-function addProduct(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const data = new FormData(e.target);
+function addProduct(values) {
     return () => store.dispatch({
         type: 'ADD_PRODUCT',
-        id: data.get('id'),
-        name: data.get('name'),
-        description: data.get('description')
+        id: values.id,
+        name: values.name,
+        description: values.description
     });
 }
 

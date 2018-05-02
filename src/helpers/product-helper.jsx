@@ -17,14 +17,27 @@ function getTotalNumberOfClicks  () {
     return store.getState().productsComponent.clicks;
 }
 
-function addProduct(state, id, name, description) {
+function addProduct(values) {
+    const id = values.id;
+    const name = values.name;
+    const description = values.description;
     console.log(id);
     console.log(name);
     console.log(description);
-    let newProducts = state.products.slice();
+    console.log(store.getState().productsComponent);
+    let newProducts = store.getState().productsComponent.products.slice();
+     newProducts.splice(id, 0, {id: id, name: name, description:description, quantity: 0});
+    console.log(store.getState().productsComponent);
+};
+
+
+/*function addProduct(state, values,id, name, description) {
+    console.log(values);
+/*    let newProducts = state.products.slice();
     newProducts.splice(id, 0, {id: id, name: name, description:description, quantity: 0});
     return {...state,  products: newProducts};
-}
+    return {...state};
+}*/
 
 function updateQuantity(state, id, threshold) {
     let product = findProduct(state.products, id);
