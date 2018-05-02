@@ -1,9 +1,8 @@
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
-import App from './App';
+import App from './components/App';
 
 import React from 'react';
 

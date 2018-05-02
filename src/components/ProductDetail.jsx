@@ -5,8 +5,7 @@ class ProductDetail extends Component {
 
     render() {
         const id = Number(this.props.match.params.id);
-        const product = productHelper.findProduct(productHelper.getProducts(), id);
-
+        const product = productHelper.findProduct(id);
         return (
             <section>
                 <span>{id} : {product[0].description}</span>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import About from "./components/about";
-import ProductList from "./components/productList";
-import ProductDetail from "./components/ProductDetail";
-import Home from "./components/home";
+import About from "./about";
+import ProductList from "./productList";
+import ProductDetail from "./ProductDetail";
+import Home from "./home";
 
 class App extends Component {
 

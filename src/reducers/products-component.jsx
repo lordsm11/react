@@ -10,7 +10,7 @@ export default (state = initState, action) => {
         case 'REMOVE_QUANTITY':
             return productHelper.updateQuantity(state, action.index, -1);
         case 'ADD_PRODUCT':
-            return productHelper.addProduct(state, action.id, action.name, action.description);
+            return productHelper.addProduct(state, action.product);
         default:
             return state;
     }

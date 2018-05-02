@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import productHelper from '../helpers/product-helper';
-import storeHelper from '../helpers/store-helper';
+import action from '../helpers/actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -12,9 +12,9 @@ class Product extends Component {
         return (
             <section>
                 <Link to={"/products/"+id} key={id}>{name}</Link>
-                <span> : [Q={productHelper.getQuantity(this.props.products, id)}]   </span>
-                <button onClick={storeHelper.addQuantity(id)}>+</button>
-                <button onClick={storeHelper.removeQuantity(id)}>-</button>
+                <span> : [Q={productHelper.getQuantity(id)}]   </span>
+                <button onClick={action.addQuantity(id)}>+</button>
+                <button onClick={action.removeQuantity(id)}>-</button>
             </section>
         )
     }
