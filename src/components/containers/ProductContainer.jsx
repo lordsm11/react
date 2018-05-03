@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Product from './../presentational/product/Product';
 import React from 'react';
+import { injectIntl } from 'react-intl';
 
 class ProductContainer extends React.Component {
     render() {
@@ -14,4 +15,4 @@ const mapStateToProps = state => ({
     products: state.productsComponent.products
 });
 
-export default connect(mapStateToProps)(ProductContainer);
+export default injectIntl(connect(mapStateToProps)(ProductContainer));
