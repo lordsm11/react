@@ -21,9 +21,10 @@ function addProduct(state, product) {
     let id = Number(product.id);
     let name = product.name;
     let description = product.description;
+    let showDescription = product.showDescription;
     let quantity = 0;
     let newProducts = getProducts().slice();
-    newProducts.splice(id, 0, {id, name, description, quantity});
+    newProducts.splice(id, 0, {id, name, description, showDescription, quantity});
     return {...state, products: newProducts };
 }
 
@@ -45,10 +46,24 @@ function updateQuantity(state, id, threshold) {
 
 }
 
+function toggleDescription(state, id) {
+    let newClicks = state.clicks + 1;
+    let newState = state.products.map((item, index) => {
+        if (item.id !== id) {
+            return item;
+        }
+        return {...item, showDescription: !item.showDescription };
+    });
+
+    return { products: newState, clicks: newClicks};
+
+}
+
 export default {
     findProduct,
     getGlobalQuantity,
     getQuantity,
     updateQuantity,
-    addProduct
+    addProduct,
+    toggleDescription
 }

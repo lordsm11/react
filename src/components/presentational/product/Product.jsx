@@ -7,13 +7,15 @@ class Product extends Component {
 
     render() {
         const id = this.props.id;
-        const name = this.props.name;
+        const product = productHelper.findProduct(id)[0];
         return (
             <section>
-                <Link to={"/products/"+id} key={id}>{name}</Link>
+                <Link to={"/products/"+id} key={id}>{product.name}</Link>
+                {product.showDescription ? ' ['+product.description+'] ' : ''}
                 <span> : [Q={productHelper.getQuantity(id)}]   </span>
                 <button onClick={action.addQuantity(id)}>+</button>
                 <button onClick={action.removeQuantity(id)}>-</button>
+                <button onClick={action.toggleDescription(id)}>D</button>
             </section>
         )
     }

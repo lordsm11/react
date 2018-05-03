@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import About from "./presentational/common/about";
 import ProductListContainer from "./containers/ProductListContainer";
+import AddProductFormContainer from "./containers/AddProductFormContainer";
 import ProductDetail from "./presentational/product/ProductDetail";
 import Home from "./presentational/common/home";
 
@@ -28,6 +29,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/home' component={Home}/>
                         <Route exact path='/products' component={ProductListContainer}/>
+                        <Route exact path="/products/add" component={AddProductFormContainer}/>
                         <Route exact path="/products/:id" component={ProductDetail}/>
                         <Route exact path="/about" component={About}/>
                         <Route component={Home}/>

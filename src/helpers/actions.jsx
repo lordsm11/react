@@ -6,11 +6,13 @@ function addProduct() {
         const product = {
             id: values.id,
             name: values.name,
-            description: values.description
+            description: values.description,
+            showDescription: true
         };
         values.id = '';
         values.name = '';
         values.description = '';
+
         dispatch({
             type: 'ADD_PRODUCT',
             product,
@@ -32,9 +34,17 @@ function removeQuantity(id) {
     });
 }
 
+function toggleDescription(id) {
+    return () => store.dispatch({
+        type: 'TOGGLE_DESCRIPTION',
+        index: id
+    });
+}
+
 export default
 {
     addQuantity,
     removeQuantity,
-    addProduct
+    addProduct,
+    toggleDescription
 }
