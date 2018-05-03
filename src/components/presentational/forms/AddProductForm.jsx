@@ -2,26 +2,30 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import actions from '../../../helpers/actions';
 import { Link } from 'react-router-dom';
+import validatorHelper from '../../../helpers/validatorHelper';
 
 class AddProductForm extends Component {
-
     render() {
-        const { handleSubmit, pristine, submitting } = this.props;
+        const { error, handleSubmit, pristine, submitting } = this.props;
         return (
             <form onSubmit={handleSubmit}>
                 <h2>Add a product</h2>
-                <div>
-                    <label>Id</label>
-                    <div><Field name="id" component="input" type="text" placeholder="id"/></div>
-                </div>
-                <div>
-                    <label>Name</label>
-                    <div><Field name="name" component="input" type="text" placeholder="name"/></div>
-                </div>
-                <div>
-                    <label>Description</label>
-                    <div><Field name="description" component="input" type="text" placeholder="description"/></div>
-                </div>
+                {error && <strong>{error}</strong>}
+                <Field name="id" type="text"
+                       component={validatorHelper.renderField}
+                       validate={[validatorHelper.required, validatorHelper.number]}
+                       label="Id"
+                />
+                <Field name="name" type="text"
+                       component={validatorHelper.renderField}
+                       validate={[validatorHelper.required, validatorHelper.maxLength15]}
+                       label="Name"
+                />
+                <Field name="description" type="text"
+                       component={validatorHelper.renderField}
+                       validate={[validatorHelper.required]}
+                       label="Description"
+                />
                 <br/>
                 <div>
                     <button type="submit" disabled={pristine || submitting}>Add product</button>

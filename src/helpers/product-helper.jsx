@@ -8,6 +8,10 @@ function findProduct(index) {
     return getProducts().filter((p) => p.id === index);
 }
 
+function isIdExist(index) {
+    return findProduct(index).length > 0;
+}
+
 function getGlobalQuantity(products) {
     return products.map((a) => (a.quantity)).reduce((a, b) => (a + b), 0);
 }
@@ -65,5 +69,6 @@ export default {
     getQuantity,
     updateQuantity,
     addProduct,
-    toggleDescription
+    toggleDescription,
+    isIdExist
 }

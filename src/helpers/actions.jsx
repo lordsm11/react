@@ -1,8 +1,16 @@
 import store from "../redux/store";
+import { SubmissionError } from 'redux-form'
+import productHelper from './product-helper';
 
 function addProduct() {
     return (dispatch, getState) => {
         const values = getState().form.addProductForm.values;
+        if (productHelper.isIdExist(Number(values.id))) {
+            throw new SubmissionError({
+                id: 'please correct id!',
+                _error: 'Id already exist!'
+            })
+        }
         const product = {
             id: values.id,
             name: values.name,
