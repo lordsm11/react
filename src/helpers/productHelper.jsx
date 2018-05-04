@@ -32,6 +32,19 @@ function addProduct(state, product) {
     return {...state, products: newProducts };
 }
 
+
+function removeProduct(state, index) {
+    let position = getProducts().findIndex((p) => p.id === index);
+    let newClicks = state.clicks + 1;
+    return {
+        products: [
+            ...state.products.slice(0, position),
+            ...state.products.slice(position + 1)
+        ],
+        clicks: newClicks
+    };
+}
+
 function updateQuantity(state, id, threshold) {
     let product = findProduct(id);
     let newQuantity = product[0].quantity + threshold;
@@ -39,14 +52,14 @@ function updateQuantity(state, id, threshold) {
     if(newQuantity < 0) {
         return {...state, clicks: newClicks };
     }
-    let newState = state.products.map((item, index) => {
+    let newProducts = state.products.map((item, index) => {
         if (item.id !== id) {
             return item;
         }
         return {...item, quantity: item.quantity + threshold };
     });
 
-    return { products: newState, clicks: newClicks};
+    return { products: newProducts, clicks: newClicks};
 
 }
 
@@ -69,6 +82,7 @@ export default {
     getQuantity,
     updateQuantity,
     addProduct,
+    removeProduct,
     toggleDescription,
     isIdExist
 }

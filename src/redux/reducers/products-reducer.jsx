@@ -1,4 +1,4 @@
-import productHelper from '../../helpers/product-helper';
+import productHelper from '../../helpers/productHelper';
 
 const initState = {clicks: 0, products: []};
 
@@ -12,6 +12,8 @@ export default (state = initState, action) => {
             return productHelper.toggleDescription(state, action.index);
         case 'ADD_PRODUCT':
             return productHelper.addProduct(state, action.product);
+        case 'REMOVE_PRODUCT':
+            return productHelper.removeProduct(state, action.index);
         default:
             return state;
     }

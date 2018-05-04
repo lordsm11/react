@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProductContainer from './../../containers/ProductContainer';
-import productHelper from '../../../helpers/product-helper';
+import productHelper from '../../../helpers/productHelper';
 import { Link } from 'react-router-dom';
 
 class ProductList extends Component {

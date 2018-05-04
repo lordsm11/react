@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import productHelper from '../../../helpers/product-helper';
+import productHelper from '../../../helpers/productHelper';
 
 class ProductDetail extends Component {
 
