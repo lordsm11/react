@@ -13,8 +13,8 @@ class Groups extends Component {
     render() {
         const data = (this.state || {}).data;
         const groups = data ? data.map((group, id) => (
-            <div>
-                <Link to={"/groups/"+group.id} key={group.id}>{group.name}</Link>
+            <div key={id}>
+                <Link to={"/groups/"+group.id}>{group.name}</Link>
             </div>
         )) : '';
         return (

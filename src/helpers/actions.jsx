@@ -1,6 +1,7 @@
 import store from "../redux/store";
 import { SubmissionError } from 'redux-form'
 import productHelper from './productHelper';
+import footService from './footService';
 
 function addProduct() {
     return (dispatch, getState) => {
@@ -43,6 +44,12 @@ function addQuantity(id) {
     });
 }
 
+function editScore(name, result) {
+    return footService.addScores([{name,result}]);
+}
+
+
+
 function removeQuantity(id) {
     return () => store.dispatch({
         type: 'REMOVE_QUANTITY',
@@ -63,5 +70,6 @@ export default
     removeQuantity,
     addProduct,
     removeProduct,
-    toggleDescription
+    toggleDescription,
+    editScore
 }

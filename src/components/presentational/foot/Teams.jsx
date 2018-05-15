@@ -12,9 +12,9 @@ class Teams extends Component {
 
     render() {
         const data = (this.state || {}).data;
-        const teams = data ? data.map((team) => (
-            <div>
-                <Link to={"/teams/"+team.name} key={team.name}>{team.name}</Link>
+        const teams = data ? data.map((team, id) => (
+            <div  key={id}>
+                <Link to={"/teams/"+team.name}>{team.name}</Link>
             </div>
         )) : '';
         return (

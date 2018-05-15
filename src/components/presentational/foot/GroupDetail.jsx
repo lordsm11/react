@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import footService from "../../../helpers/footService";
-import Moment from 'moment';
+import Match from './Match';
 
 class GroupDetail extends Component {
 
@@ -14,18 +14,9 @@ class GroupDetail extends Component {
     render() {
         const data = (this.state || {}).data;
         const matchs = data ? data.map((match, id) => (
-            <tr key={id}>
-                <td>{match.firstTeam}</td>
-                <td>{match.secondTeam}</td>
-                <td>{Moment(match.startDate).format('DD/MM/YYYY')}</td>
-            </tr>
+            <Match key={id} data={match}/>
         )) : '';
-        return (
-            <section>
-                {matchs}
-            </section>
-        );
-
+        return (<table><tbody>{matchs}</tbody></table>);
     }
 }
 
