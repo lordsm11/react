@@ -14,6 +14,8 @@ export default (state = initState, action) => {
             return productHelper.addProduct(state, action.product);
         case 'REMOVE_PRODUCT':
             return productHelper.removeProduct(state, action.index);
+        case 'EDIT_SCORE':
+            return productHelper.editScores(state, action.results);
         default:
             return state;
     }

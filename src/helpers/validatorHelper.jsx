@@ -22,6 +22,10 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
         </div>
 );
 
+const renderSimpleField = ({ input, label, type}) => (
+    <input {...input} placeholder={label} type={type}/>
+);
+
 export default {
     required,
     maxLength,
@@ -29,5 +33,6 @@ export default {
     minValue18,
     number,
     email,
-    renderField
+    renderField,
+    renderSimpleField
 }

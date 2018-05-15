@@ -1,7 +1,6 @@
 import store from "../redux/store";
 import { SubmissionError } from 'redux-form'
 import productHelper from './productHelper';
-import footService from './footService';
 
 function addProduct() {
     return (dispatch, getState) => {
@@ -29,6 +28,25 @@ function addProduct() {
     }
 }
 
+function editScore() {
+    return (dispatch, getState) => {
+        const values = getState().form.editScoreForm.values;
+        const results = [];
+        for (let key in values) {
+            results.push({
+                name:key.substr(7),
+                result:values[key]
+            });
+        }
+        console.log("results");
+        console.log(results);
+        dispatch({
+            type: 'EDIT_SCORE',
+            results:results
+        });
+    }
+}
+
 
 function removeProduct(id) {
     return () => store.dispatch({
@@ -43,12 +61,6 @@ function addQuantity(id) {
         index: id
     });
 }
-
-function editScore(name, result) {
-    return footService.addScores([{name,result}]);
-}
-
-
 
 function removeQuantity(id) {
     return () => store.dispatch({
