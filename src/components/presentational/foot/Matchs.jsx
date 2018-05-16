@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import actions from '../../../helpers/actions';
 import Match from './Match';
@@ -11,7 +12,7 @@ class Matchs extends Component {
         const { handleSubmit} = this.props;
         const matchs = this.props.matchs;
         if(matchs){
-            const matchsView = matchs.map((match, id) => (<Match key={id} match={match}/>));
+            const matchsView = matchs.map((match, id) => (<Match key={id} name={match.name}/>));
             return (
                     <form onSubmit={handleSubmit}>
                         <table>
@@ -25,17 +26,38 @@ class Matchs extends Component {
     }
 }
 
-const onSubmit = (values, dispatch,rtt) => {
-    console.log(values);
-    console.log(rtt);
-    dispatch(actions.editScore(1,values.result));
+const onSubmit = (values, dispatch) => {
+    dispatch(actions.editScore());
 };
 
-export default reduxForm({
+const strMapToObj = (strMap)  => {
+    let obj = Object.create(null);
+    for (let [k,v] of strMap) {
+        obj[k] = v;
+    }
+    return obj;
+};
+
+const initFormValues = (matchs) => {
+    if(matchs) {
+        var matchsMap = new Map();
+        matchs.map((match) => matchsMap.set('result_'+match.name,match.result));
+        return strMapToObj(matchsMap);
+    }
+};
+
+Matchs = reduxForm({
     form: 'editScoreForm',
     onSubmit
 })(Matchs);
 
+Matchs = connect(
+        state => ({
+            initialValues: initFormValues(state.productsComponent.matchs)
+        }), {}
+)(Matchs);
+
+export default Matchs
 
 
 

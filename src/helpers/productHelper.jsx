@@ -1,5 +1,4 @@
 import store from "../redux/store";
-import footService from './footService';
 
 function getProducts() {
     return store.getState().productsComponent.products;
@@ -20,12 +19,6 @@ function getGlobalQuantity(products) {
 function getQuantity(id) {
     let product = findProduct(id);
     return product.length > 0 ? product[0].quantity : 0;
-}
-
-function editScores(state, matchs) {
-    console.log(state, matchs);
-    footService.addScores(matchs);
-    return state;
 }
 
 function addProduct(state, product) {
@@ -91,6 +84,5 @@ export default {
     addProduct,
     removeProduct,
     toggleDescription,
-    isIdExist,
-    editScores
+    isIdExist
 }

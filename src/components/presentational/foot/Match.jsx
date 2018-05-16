@@ -3,42 +3,30 @@ import Moment from 'moment';
 
 import { Field } from 'redux-form';
 import validatorHelper from '../../../helpers/validatorHelper';
+import footHelper from '../../../helpers/footHelper';
+import action from "../../../helpers/actions";
+import {connect} from "react-redux";
 
 
 class Match extends Component {
 
-    constructor(props) {
-        super(props);
-        const match = this.props.match;
-        this.state = {name:match.name,edit:false, result: match.result ? match.result : '0-0'};
-    }
-
     render() {
-        const match = this.props.match;
-        const name = "result_"+match.name;
-        const editBloc = this.state.edit ?
-            (
-                <td>
-                    <Field name={name} type="text" component={validatorHelper.renderSimpleField} label="Result"/>
-                </td>
-            ) :
-            (
-                <td>
-                    <button type="submit" onClick={(e) => {e.preventDefault(); this.setState({...this.state, edit: !this.state.edit});}}>Edit</button>
-                </td>
-            );
+        const name = this.props.name;
+        const match = footHelper.findMatch(name);
+        const fieldName = "result_"+ name;
 
         return (
             <tr key={match.id}>
                 <td>{match.firstTeam}</td>
                 <td>{match.secondTeam}</td>
                 <td>{Moment(match.startDate).format('DD/MM/YYYY')}</td>
-                <td>{this.state.result}</td>
-                {editBloc}
+                <td>{match.result ? match.result : 'Not started'}</td>
+                <td><Field name={fieldName} type="text" component={validatorHelper.renderSimpleField} label="Result"/></td>
             </tr>
         );
 
     }
 }
 
-export default Match;
+
+export default connect(state => ({state: state}), {})(Match);

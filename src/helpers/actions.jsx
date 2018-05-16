@@ -38,8 +38,6 @@ function editScore() {
                 result:values[key]
             });
         }
-        console.log("results");
-        console.log(results);
         dispatch({
             type: 'EDIT_SCORE',
             results:results
@@ -76,6 +74,13 @@ function toggleDescription(id) {
     });
 }
 
+function updateMatchs(matchs) {
+    /*return () => */store.dispatch({
+        type: 'UPDATE_MATCHS',
+        matchs: matchs
+    });
+}
+
 export default
 {
     addQuantity,
@@ -83,5 +88,6 @@ export default
     addProduct,
     removeProduct,
     toggleDescription,
-    editScore
+    editScore,
+    updateMatchs
 }

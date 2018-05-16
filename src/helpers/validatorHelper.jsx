@@ -23,7 +23,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 );
 
 const renderSimpleField = ({ input, label, type}) => (
-    <input {...input} placeholder={label} type={type}/>
+    <input {...input} type={type}/>
 );
 
 export default {
