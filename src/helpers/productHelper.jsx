@@ -1,7 +1,7 @@
 import store from "../redux/store";
 
 function getProducts() {
-    return store.getState().productsComponent.products;
+    return store.getState().productsReducer.products;
 }
 
 function findProduct(index) {

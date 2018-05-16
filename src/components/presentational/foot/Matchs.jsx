@@ -5,8 +5,25 @@ import { reduxForm } from 'redux-form';
 import actions from '../../../helpers/actions';
 import Match from './Match';
 
+import footService from "../../../helpers/footService";
 
 class Matchs extends Component {
+
+    componentWillMount() {
+        if(this.props.type === 'group') {
+            const groupId = this.props.match.params.groupId;
+            footService.getMatchsByGroup(groupId)
+                    .then(function(response){
+                        actions.updateMatchs(response.data);
+                    });
+        } else {
+            const teamId = this.props.match.params.teamId;
+            footService.getMatchsByTeam(teamId)
+                    .then(function(response){
+                        actions.updateMatchs(response.data);
+                    });
+        }
+    }
 
     render() {
         const { handleSubmit} = this.props;
@@ -53,7 +70,8 @@ Matchs = reduxForm({
 
 Matchs = connect(
         state => ({
-            initialValues: initFormValues(state.productsComponent.matchs)
+            initialValues: initFormValues(state.footReducer.matchs),
+            matchs: state.footReducer.matchs
         }), {}
 )(Matchs);
 

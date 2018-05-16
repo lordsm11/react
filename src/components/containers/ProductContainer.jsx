@@ -12,7 +12,7 @@ class ProductContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    products: state.productsComponent.products
+    products: state.productsReducer.products
 });
 
 export default injectIntl(connect(mapStateToProps)(ProductContainer));

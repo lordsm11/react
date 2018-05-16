@@ -1,5 +1,4 @@
 import footService from './footService';
-import store from "../redux/store";
 
 function editScores(state, scores) {
     footService.addScores(scores);
@@ -13,8 +12,11 @@ function editScores(state, scores) {
     return {...state, matchs};
 }
 
-function findMatch(name) {
-    const match =  store.getState().productsComponent.matchs.filter((m) => m.name === name);
+function findMatch(matchs, name) {
+    if(!matchs) {
+        return undefined;
+    }
+    const match =  matchs.filter((m) => m.name === name);
     return match.length > 0 ? match[0] : undefined;
 }
 
@@ -29,8 +31,20 @@ function updateMatchs(state, matchs) {
 }
 
 
+function setGroups(state, groups) {
+    return {...state, groups: groups };
+}
+
+
+function setTeams(state, teams) {
+    return {...state, teams: teams };
+}
+
+
 export default {
     editScores,
     updateMatchs,
-    findMatch
+    findMatch,
+    setGroups,
+    setTeams
 }

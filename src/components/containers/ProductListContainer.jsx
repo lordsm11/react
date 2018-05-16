@@ -11,8 +11,8 @@ class ProductListContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    products: state.productsComponent.products,
-    clicks: state.productsComponent.clicks
+    products: state.productsReducer.products,
+    clicks: state.productsReducer.clicks
 });
 
 export default connect(mapStateToProps)(ProductListContainer);

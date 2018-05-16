@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import footService from '../../../helpers/footService';
+import actions from '../../../helpers/actions';
 import { Link } from 'react-router-dom';
+import {connect} from "react-redux";
 
 class Groups extends Component {
 
     componentWillMount() {
-        footService.getGroups().then(result => {
-            this.setState({ data: result.data })
-        });
+        footService.getGroups()
+                .then(function(response){
+                    actions.setGroups(response.data);
+                });
     }
 
     render() {
-        const data = (this.state || {}).data;
-        const groups = data ? data.map((group, id) => (
+        const groups = this.props.groups;
+        const groupsView = groups ? groups.map((group, id) => (
             <div key={id}>
                 <Link to={"/groups/"+group.id}>{group.name}</Link>
             </div>
         )) : '';
         return (
             <section>
-                {groups}
+                {groupsView}
             </section>
         );
     }
 }
 
-export default Groups;
+export default connect(state => ({groups: state.footReducer.groups}), {})(Groups);

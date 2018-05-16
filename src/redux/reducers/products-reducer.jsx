@@ -1,5 +1,4 @@
 import productHelper from '../../helpers/productHelper';
-import footHelper from '../../helpers/footHelper';
 
 const initState = {clicks: 0, products: []};
 
@@ -15,10 +14,6 @@ export default (state = initState, action) => {
             return productHelper.addProduct(state, action.product);
         case 'REMOVE_PRODUCT':
             return productHelper.removeProduct(state, action.index);
-        case 'EDIT_SCORE':
-            return footHelper.editScores(state, action.results);
-        case 'UPDATE_MATCHS':
-            return footHelper.updateMatchs(state, action.matchs);
         default:
             return state;
     }

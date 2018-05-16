@@ -75,11 +75,26 @@ function toggleDescription(id) {
 }
 
 function updateMatchs(matchs) {
-    /*return () => */store.dispatch({
+    store.dispatch({
         type: 'UPDATE_MATCHS',
         matchs: matchs
     });
 }
+
+function setTeams(teams) {
+    store.dispatch({
+        type: 'SET_TEAMS',
+        teams: teams
+    });
+}
+
+function setGroups(groups) {
+    store.dispatch({
+        type: 'SET_GROUPS',
+        groups: groups
+    });
+}
+
 
 export default
 {
@@ -89,5 +104,7 @@ export default
     removeProduct,
     toggleDescription,
     editScore,
-    updateMatchs
+    updateMatchs,
+    setTeams,
+    setGroups
 }

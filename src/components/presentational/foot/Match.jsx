@@ -4,7 +4,6 @@ import Moment from 'moment';
 import { Field } from 'redux-form';
 import validatorHelper from '../../../helpers/validatorHelper';
 import footHelper from '../../../helpers/footHelper';
-import action from "../../../helpers/actions";
 import {connect} from "react-redux";
 
 
@@ -12,7 +11,7 @@ class Match extends Component {
 
     render() {
         const name = this.props.name;
-        const match = footHelper.findMatch(name);
+        const match = footHelper.findMatch(this.props.matchs, name);
         const fieldName = "result_"+ name;
 
         return (
@@ -29,4 +28,4 @@ class Match extends Component {
 }
 
 
-export default connect(state => ({state: state}), {})(Match);
+export default connect(state => ({matchs: state.footReducer.matchs}), {})(Match);
